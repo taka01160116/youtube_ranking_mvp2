@@ -24,7 +24,7 @@ jobs:
 
       - name: Run update script
         run: |
-          scheduler/daily_update.py
+          python scheduler/daily_update.py
 
       - name: Commit and push if changed
         run: |
