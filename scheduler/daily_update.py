@@ -170,8 +170,8 @@ def get_video_details_bulk(api_manager, video_id_list):
                     if "duration" not in info["contentDetails"]:
                         continue
                     duration = isodate.parse_duration(info["contentDetails"]["duration"]).total_seconds()
-                    if duration < 300:
-                        continue  # 5分未満は除外（既存仕様）
+                    if duration < 190:
+                        continue  # 3分10秒未満は除外（既存仕様）
                     results.append({
                         "動画ID": info["id"],
                         "動画タイトル": info["snippet"]["title"],
