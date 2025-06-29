@@ -1,19 +1,21 @@
+# .github/workflows/update_data.yml
 name: 毎日データ自動更新
 
 on:
   schedule:
-    - cron: '0 21 * * *'  # 日本時間6:00に相当（UTCで設定）
+    - cron: '0 21 * * *'
   workflow_dispatch:
-
-permissions:
-  contents: write   # ←これを追加！
 
 jobs:
   update:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
+
+      - name: Create api_keys.txt from Secrets
+        run: |
+          mkdir -p utils
+          echo "${{ secrets.YOUTUBE_API_KEYS }}" > api_keys.txt
 
       - name: Set up Python
         uses: actions/setup-python@v5
