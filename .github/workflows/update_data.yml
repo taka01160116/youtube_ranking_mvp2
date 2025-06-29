@@ -5,6 +5,9 @@ on:
     - cron: '0 21 * * *'  # 日本時間6:00に相当（UTCで設定）
   workflow_dispatch:
 
+permissions:
+  contents: write   # ←これを追加！
+
 jobs:
   update:
     runs-on: ubuntu-latest
